@@ -1,0 +1,41 @@
+
+import(traktor)
+import(traktor.run)
+
+local function buildRV()
+	local TRAKTOR_HOME < const > = os:getEnvironment("TRAKTOR_HOME")
+	local SCRIPT_HOME < const > = fileSystem:getAbsolutePath(Path(os:getEnvironment("RUN_SCRIPT_PATH"))):normalized().pathNameOS
+
+	os:setEnvironment("MAKE_OS", "linux")
+	os:setEnvironment("MAKE_DIALECT", "make")
+	os:setEnvironment("MAKE_FORMAT", TRAKTOR_HOME .. "/resources/build/configurations/make-format.sbm")
+	os:setEnvironment("MAKE_INCLUDE", SCRIPT_HOME .. "/../klara-rv/make-config-rv32imf_zicsr.inc")
+	os:setEnvironment("MAKE_TOOLCHAIN", "gcc")
+	os:setEnvironment("MAKE_OBJECT_FILE", "%s.o")
+	os:setEnvironment("MAKE_STATIC_LIBRARY_FILE", "lib%s.a")
+	os:setEnvironment("MAKE_SHARED_LIBRARY_FILE", "lib%s.so")
+	os:setEnvironment("MAKE_EXECUTABLE_FILE", "%s")
+	os:setEnvironment("MAKE_VERBOSE", "false")
+	os:setEnvironment("MAKE_HOME", SCRIPT_HOME)
+
+	run:execute(
+		TRAKTOR_HOME .. "/bin/linux/releasestatic/Traktor.SolutionBuilder.App " ..
+		"-f=make2 " ..
+		"-make-solution-template=" .. TRAKTOR_HOME .. "/resources/build/configurations/make-solution.sbm " ..
+		"-make-project-template=" .. TRAKTOR_HOME .. "/resources/build/configurations/make-project.sbm " ..
+		"doomgeneric.xms"
+	)
+
+	run:pushd("build")
+	if run:execute("make -f Doom.mak DebugStatic") ~= 0 then return false end
+	if run:execute("make -f Doom.mak ReleaseStatic") ~= 0 then return false end
+	run:popd()
+
+	return true
+end
+
+function main()
+	if not buildRV() then return 1 end
+	stdout:printLn("Build successful.")
+	return 0
+end

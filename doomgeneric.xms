@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object type="traktor.sb.Solution" version="5">
+	<name>Doom</name>
+	<rootPath>build</rootPath>
+	<aggregateOutputPath/>
+	<projects>
+		<item type="traktor.sb.Project" version="1">
+			<enable>true</enable>
+			<name>Doom</name>
+			<sourcePath>doomgeneric</sourcePath>
+			<configurations>
+				<item type="traktor.sb.Configuration" version="5">
+					<name>DebugStatic</name>
+					<targetFormat>TfExecutableConsole</targetFormat>
+					<targetProfile>TpDebug</targetProfile>
+					<precompiledHeader/>
+					<includePaths/>
+					<definitions>
+						<item>_DEBUG</item>
+						<item>CMAP256</item>
+					</definitions>
+					<libraryPaths/>
+					<libraries/>
+					<warningLevel>WlCompilerDefault</warningLevel>
+					<additionalCompilerOptions/>
+					<additionalLinkerOptions>-T$(MAKE_HOME)/Link.ld</additionalLinkerOptions>
+					<debugExecutable/>
+					<debugArguments/>
+					<debugEnvironment/>
+					<debugWorkingDirectory/>
+					<aggregationItems/>
+					<consumerLibraryPath/>
+				</item>
+				<item type="traktor.sb.Configuration" version="5">
+					<name>ReleaseStatic</name>
+					<targetFormat>TfExecutableConsole</targetFormat>
+					<targetProfile>TpRelease</targetProfile>
+					<precompiledHeader/>
+					<includePaths/>
+					<definitions>
+						<item>NDEBUG</item>
+						<item>CMAP256</item>
+					</definitions>
+					<libraryPaths/>
+					<libraries/>
+					<warningLevel>WlCompilerDefault</warningLevel>
+					<additionalCompilerOptions/>
+					<additionalLinkerOptions>-T$(MAKE_HOME)/Link.ld</additionalLinkerOptions>
+					<debugExecutable/>
+					<debugArguments/>
+					<debugEnvironment/>
+					<debugWorkingDirectory/>
+					<aggregationItems/>
+					<consumerLibraryPath/>
+				</item>
+			</configurations>
+			<items>
+				<item type="traktor.sb.File" version="1">
+					<fileName>*.h</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>am_map.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>d_event.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>d_items.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>d_iwad.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>d_loop.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>d_main.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>d_mode.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>d_net.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>doomdef.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>doomgeneric.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>doomgeneric_retrodack.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>doomstat.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>dstrings.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>dummy.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>f_finale.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>f_wipe.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>g_game.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>gusconf.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>hu_lib.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>hu_stuff.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>i_cdmus.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>i_endoom.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>i_input.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>i_joystick.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>i_main.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>i_scale.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>i_sound.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>i_system.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>i_timer.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>i_video.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>icon.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>info.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>m_argv.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>m_bbox.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>m_cheat.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>m_config.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>m_controls.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>m_fixed.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>m_menu.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>m_misc.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>m_random.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>memio.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_ceilng.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_doors.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_enemy.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_floor.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_inter.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_lights.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_map.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_maputl.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_mobj.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_plats.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_pspr.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_saveg.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_setup.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_sight.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_spec.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_switch.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_telept.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_tick.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>p_user.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>r_bsp.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>r_data.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>r_draw.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>r_main.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>r_plane.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>r_segs.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>r_sky.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>r_things.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>s_sound.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>sha1.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>sounds.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>st_lib.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>st_stuff.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>statdump.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>tables.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>v_video.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>w_checksum.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>w_file.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>w_file_stdc.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>w_main.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>w_wad.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>wi_stuff.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File" version="1">
+					<fileName>z_zone.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+			</items>
+			<dependencies>
+				<item type="traktor.sb.ExternalDependency" version="3">
+					<inheritIncludePaths>true</inheritIncludePaths>
+					<link>LnkYes</link>
+					<solutionFileName>../retrodack/retrodack-rv.xms</solutionFileName>
+					<projectName>Runtime</projectName>
+				</item>
+			</dependencies>
+		</item>
+	</projects>
+</object>
