@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#if defined(FEATURE_SOUND) && !defined(__DJGPP__)
+#if defined(FEATURE_SOUND) && !defined(__DJGPP__) && !defined(__RV__)
 #include <SDL_mixer.h>
 #endif
 
@@ -71,11 +71,13 @@ static int snd_mport = 0;
 
 // Compiled-in sound modules:
 
+extern sound_module_t DG_sound_module;
+
 static sound_module_t *sound_modules[] = 
 {
-    #ifdef FEATURE_SOUND
+    //#ifdef FEATURE_SOUND
     &DG_sound_module,
-    #endif
+    //#endif
     NULL,
 };
 

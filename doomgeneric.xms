@@ -18,6 +18,8 @@
 					<definitions>
 						<item>_DEBUG</item>
 						<item>CMAP256</item>
+						<item>FEATURE_SOUND</item>
+						<item>__RV__</item>
 					</definitions>
 					<libraryPaths/>
 					<libraries/>
@@ -40,6 +42,8 @@
 					<definitions>
 						<item>NDEBUG</item>
 						<item>CMAP256</item>
+						<item>FEATURE_SOUND</item>
+						<item>__RV__</item>
 					</definitions>
 					<libraryPaths/>
 					<libraries/>
@@ -477,6 +481,11 @@
 				</item>
 				<item type="traktor.sb.File" version="1">
 					<fileName>z_zone.c</fileName>
+					<excludeFilter/>
+					<items/>
+				</item>
+				<item type="traktor.sb.File">
+					<fileName>i_rvsound.c</fileName>
 					<excludeFilter/>
 					<items/>
 				</item>
