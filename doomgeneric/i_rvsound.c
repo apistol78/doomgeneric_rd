@@ -2,15 +2,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-// #include <string.h>
-// #include <assert.h>
-// #include <ctype.h>
-// #include <SDL.h>
-// #include <SDL_mixer.h>
-
-// #ifdef HAVE_LIBSAMPLERATE
-// #include <samplerate.h>
-// #endif
 
 #include <Runtime/Audio.h>
 #include <Runtime/Kernel.h>
@@ -146,8 +137,8 @@ static boolean CacheSFX(sfxinfo_t *sfxinfo)
 
 ///
 
-#define NUM_CHANNELS 16
-#define FRAME_SAMPLES 64
+#define NUM_CHANNELS 8
+#define FRAME_SAMPLES 128
 
 typedef struct
 {
@@ -178,13 +169,13 @@ static void rv_sound_mixer_thread()
                 if (ch->snd == 0)
                     continue;
 
-                s += (ch->snd->samples[ch->position] * ch->volume) >> 6;
+                s += ((int32_t)ch->snd->samples[ch->position] * ch->volume) >> 8;
                 if (++ch->position >= ch->snd->nsamples)
                     ch->snd = 0;
             }
 
-            *d++ = (s << 16) | s;
-            // *d++ = s;
+            *d++ = s;
+            *d++ = s;
         }
 
         rt_audio_wait();
@@ -228,19 +219,18 @@ static void I_SDL_UpdateSound(void)
 
 static void I_SDL_UpdateSoundParams(int handle, int vol, int sep)
 {
-    s_channels[handle].volume = vol;
+    if (handle < NUM_CHANNELS)
+        s_channels[handle].volume = vol;
 }
 
 static int I_SDL_StartSound(sfxinfo_t *sfxinfo, int channel, int vol, int sep)
 {
-    if (!CacheSFX(sfxinfo))
+    if (!CacheSFX(sfxinfo) || channel >= NUM_CHANNELS)
         return -1;
 
     s_channels[channel].snd = sfxinfo->driver_data;
     s_channels[channel].position = 0;
     s_channels[channel].volume = vol;
-
-    // printf("*** %d\n", vol);
 
     return channel;
 }
