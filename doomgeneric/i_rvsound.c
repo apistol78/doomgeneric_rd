@@ -220,7 +220,7 @@ static int I_SDL_StartSound(sfxinfo_t *sfxinfo, int channel, int vol, int sep)
 
     const rv_sound_data_t* snd = sfxinfo->driver_data;
 
-    rt_audio_play_mono(channel, snd->samples, snd->nsamples);
+    rt_audio_play(channel, snd->samples, snd->nsamples, RT_AUDIO_MODE_REPLACE | RT_AUDIO_MODE_MONO);
     rt_audio_set_channel_volume(channel, (uint8_t)vol);
 
     return channel;
