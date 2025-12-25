@@ -138,67 +138,58 @@ static boolean CacheSFX(sfxinfo_t *sfxinfo)
 ///
 
 #define NUM_CHANNELS 8
-#define FRAME_SAMPLES 128
+// #define FRAME_SAMPLES 128
 
-typedef struct
-{
-    const rv_sound_data_t* snd;
-    int32_t position;
-    int32_t volume;
-}
-rv_channel_t;
+// typedef struct
+// {
+//     const rv_sound_data_t* snd;
+//     int32_t position;
+//     int32_t volume;
+// }
+// rv_channel_t;
 
-static rv_channel_t s_channels[NUM_CHANNELS];
+// static rv_channel_t s_channels[NUM_CHANNELS];
 
-static void rv_sound_mixer_thread()
-{
-	static int16_t buf[64][FRAME_SAMPLES * 2];
-	static uint32_t toggle = 0;
+// static void rv_sound_mixer_thread()
+// {
+// 	static int16_t buf[64][FRAME_SAMPLES * 2];
+// 	static uint32_t toggle = 0;
 
-    for (;;)
-    {
-        int16_t* d = buf[toggle];
+//     for (;;)
+//     {
+//         int16_t* d = buf[toggle];
 
-        for (int32_t i = 0; i < FRAME_SAMPLES; ++i)
-        {
-            int16_t s = 0;
+//         for (int32_t i = 0; i < FRAME_SAMPLES; ++i)
+//         {
+//             int16_t s = 0;
 
-            for (int32_t j = 0; j < NUM_CHANNELS; ++j)
-            {
-                rv_channel_t* ch = &s_channels[j];
-                if (ch->snd == 0)
-                    continue;
+//             for (int32_t j = 0; j < NUM_CHANNELS; ++j)
+//             {
+//                 rv_channel_t* ch = &s_channels[j];
+//                 if (ch->snd == 0)
+//                     continue;
 
-                s += ((int32_t)ch->snd->samples[ch->position] * ch->volume) >> 8;
-                if (++ch->position >= ch->snd->nsamples)
-                    ch->snd = 0;
-            }
+//                 s += ((int32_t)ch->snd->samples[ch->position] * ch->volume) >> 8;
+//                 if (++ch->position >= ch->snd->nsamples)
+//                     ch->snd = 0;
+//             }
 
-            *d++ = s;
-            *d++ = s;
-        }
+//             *d++ = s;
+//             *d++ = s;
+//         }
 
-        rt_audio_wait();
-        rt_audio_play_stereo(buf[toggle], FRAME_SAMPLES);
+//         rt_audio_wait();
+//         rt_audio_play_stereo(buf[toggle], FRAME_SAMPLES);
 
-        toggle = (toggle + 1) & 63;
-    }
-}
+//         toggle = (toggle + 1) & 63;
+//     }
+// }
 
 ///
 
 static boolean I_SDL_InitSound(boolean _use_sfx_prefix)
 {
     use_sfx_prefix = _use_sfx_prefix;
-    
-    for (int32_t i = 0; i < NUM_CHANNELS; ++i)
-    {
-        s_channels[i].snd = 0;
-        s_channels[i].position = 0;
-        s_channels[i].volume = 0;
-    }
-
-	rt_kernel_create_thread(rv_sound_mixer_thread);
     return true;
 }
 
@@ -219,8 +210,7 @@ static void I_SDL_UpdateSound(void)
 
 static void I_SDL_UpdateSoundParams(int handle, int vol, int sep)
 {
-    if (handle < NUM_CHANNELS)
-        s_channels[handle].volume = vol;
+    rt_audio_set_channel_volume(handle, (uint8_t)vol);
 }
 
 static int I_SDL_StartSound(sfxinfo_t *sfxinfo, int channel, int vol, int sep)
@@ -228,21 +218,22 @@ static int I_SDL_StartSound(sfxinfo_t *sfxinfo, int channel, int vol, int sep)
     if (!CacheSFX(sfxinfo) || channel >= NUM_CHANNELS)
         return -1;
 
-    s_channels[channel].snd = sfxinfo->driver_data;
-    s_channels[channel].position = 0;
-    s_channels[channel].volume = vol;
+    const rv_sound_data_t* snd = sfxinfo->driver_data;
+
+    rt_audio_play_mono(channel, snd->samples, snd->nsamples);
+    rt_audio_set_channel_volume(channel, (uint8_t)vol);
 
     return channel;
 }
 
 static void I_SDL_StopSound(int handle)
 {
-    s_channels[handle].snd = 0;
+    // s_channels[handle].snd = 0;
 }
 
 static boolean I_SDL_SoundIsPlaying(int handle)
 {
-    return s_channels[handle].snd != 0;
+    return rt_audio_is_channels_busy(1 << handle);
 }
 
 static void I_SDL_PrecacheSounds(sfxinfo_t *sounds, int num_sounds)
