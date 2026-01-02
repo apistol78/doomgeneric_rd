@@ -139,6 +139,16 @@ static boolean CacheSFX(sfxinfo_t *sfxinfo)
 
 #define NUM_CHANNELS 4
 
+static int saturateVolume(int a)
+{
+	if (a <= 0)
+		return 1;
+	else if (a >= 15)
+		return 15;
+	else
+		return 0;
+}
+
 static boolean I_SDL_InitSound(boolean _use_sfx_prefix)
 {
 	use_sfx_prefix = _use_sfx_prefix;
@@ -162,7 +172,7 @@ static void I_SDL_UpdateSound(void)
 
 static void I_SDL_UpdateSoundParams(int handle, int vol, int sep)
 {
-	rt_audio_set_channel_volume(handle, (uint8_t)(vol >> 2));
+	rt_audio_set_channel_volume(handle, (uint8_t)saturateVolume(vol >> 2));
 }
 
 static int I_SDL_StartSound(sfxinfo_t *sfxinfo, int channel, int vol, int sep)
@@ -173,7 +183,7 @@ static int I_SDL_StartSound(sfxinfo_t *sfxinfo, int channel, int vol, int sep)
 	const rv_sound_data_t* snd = sfxinfo->driver_data;
 
 	rt_audio_play(channel, snd->samples, snd->nsamples, RT_AUDIO_MODE_REPLACE | RT_AUDIO_MODE_MONO);
-	rt_audio_set_channel_volume(channel, (uint8_t)(vol >> 2));
+	rt_audio_set_channel_volume(channel, (uint8_t)saturateVolume(vol >> 2));
 
 	return channel;
 }
