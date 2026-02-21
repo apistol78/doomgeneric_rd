@@ -137,8 +137,6 @@ static boolean CacheSFX(sfxinfo_t *sfxinfo)
 
 ///
 
-#define NUM_CHANNELS 4
-
 static int saturateVolume(int a)
 {
 	if (a <= 0)
@@ -177,7 +175,7 @@ static void I_SDL_UpdateSoundParams(int handle, int vol, int sep)
 
 static int I_SDL_StartSound(sfxinfo_t *sfxinfo, int channel, int vol, int sep)
 {
-	if (!CacheSFX(sfxinfo) || channel >= NUM_CHANNELS)
+	if (!CacheSFX(sfxinfo) || channel >= rt_audio_get_num_channels())
 		return -1;
 
 	const rv_sound_data_t* snd = sfxinfo->driver_data;

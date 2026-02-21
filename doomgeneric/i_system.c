@@ -245,23 +245,24 @@ void I_BindVariables(void)
 
 void I_Quit (void)
 {
-    atexit_listentry_t *entry;
+//     atexit_listentry_t *entry;
 
-    // Run through all exit functions
+//     // Run through all exit functions
  
-    entry = exit_funcs; 
+//     entry = exit_funcs; 
 
-    while (entry != NULL)
-    {
-        entry->func();
-        entry = entry->next;
-    }
+//     while (entry != NULL)
+//     {
+//         entry->func();
+//         entry = entry->next;
+//     }
 
-#if ORIGCODE
-    SDL_Quit();
+// #if ORIGCODE
+//     SDL_Quit();
 
+//     exit(0);
+// #endif
     exit(0);
-#endif
 }
 
 #if !defined(_WIN32) && !defined(__MACOSX__) && !defined(__DJGPP__)
